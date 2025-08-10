@@ -29,7 +29,6 @@
             margin-top: 5px;
             margin-bottom: 30px;
         }
-        /* 三欄式佈局 */
         .grid-container {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -69,7 +68,20 @@
             margin-top: 40px;
             display: none;
         }
-        /* 將結果區塊調整為只有兩欄 */
+        #result-header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        #result-back-btn {
+            padding: 8px 16px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
         #result-grid {
             grid-template-columns: repeat(2, 1fr);
         }
@@ -77,14 +89,25 @@
             background-color: #e9f5ff;
             display: flex;
             flex-direction: column;
+            padding: 15px;
         }
         .result-column h3 {
             border-bottom: 2px solid #2980b9;
+            margin-top: 0;
+        }
+        .result-header {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 5px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 5px;
         }
         .result-item {
             margin-bottom: 10px;
         }
-        /* 新增：最右邊結果欄位移到下方的新容器 */
         #column-3-result-container {
             margin-top: 20px;
             padding: 15px;
@@ -97,13 +120,11 @@
             border-bottom: 2px solid #2980b9;
             padding-bottom: 10px;
         }
-        /* 最右邊結果欄位的兩欄佈局 */
         #column-3-text-results {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 10px;
         }
-        /* 圖片容器 */
         #column-3-image-results {
             margin-top: 20px;
             display: flex;
@@ -115,6 +136,20 @@
             height: auto;
             border: 1px solid #ccc;
             border-radius: 5px;
+        }
+        .result-values {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 5px;
+            margin-top: 5px;
+            font-size: 14px;
+        }
+        .result-values span {
+            text-align: center;
+            background-color: #fff;
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
         }
     </style>
 </head>
@@ -144,14 +179,27 @@
         <button id="submit-btn">提交</button>
 
         <div id="result-section">
-            <h1>檢查結果</h1>
+            <div id="result-header-container">
+                <h1>檢查結果</h1>
+                <button id="result-back-btn">返回</button>
+            </div>
             <div class="grid-container" id="result-grid">
                 <div class="column result-column" id="result-column-1">
-                    <h3>血液/生化檢查</h3>
+                    <h3>血液/生化檢查(正常參考值)</h3>
+                    <div class="result-header">
+                        <span>項目</span>
+                        <span>結果</span>
+                        <span>正常值</span>
+                    </div>
                 </div>
                 
                 <div class="column result-column" id="result-column-2">
-                    <h3>其他檢查</h3>
+                    <h3>其他檢查(正常參考值)</h3>
+                    <div class="result-header">
+                        <span>項目</span>
+                        <span>結果</span>
+                        <span>正常值</span>
+                    </div>
                 </div>
             </div>
             
@@ -163,7 +211,7 @@
         </div>
 
     </div>
-
+    
     <script src="script.js"></script>
 
 </body>
