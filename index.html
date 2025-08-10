@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>急性呼吸困難評估</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        h2 {
+            text-align: center;
+            color: #666;
+            margin-top: 5px;
+            margin-bottom: 30px;
+        }
+        /* 三欄式佈局 */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .column {
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .column h3 {
+            margin-top: 0;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+        }
+        .checkbox-group label {
+            display: block;
+            margin: 10px 0;
+            cursor: pointer;
+        }
+        .checkbox-group input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        #submit-btn {
+            display: block;
+            width: 200px;
+            margin: 30px auto 0;
+            padding: 12px;
+            font-size: 18px;
+            cursor: pointer;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        #result-section {
+            margin-top: 40px;
+            display: none;
+        }
+        /* 將結果區塊調整為只有兩欄 */
+        #result-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .result-column {
+            background-color: #e9f5ff;
+            display: flex;
+            flex-direction: column;
+        }
+        .result-column h3 {
+            border-bottom: 2px solid #2980b9;
+        }
+        .result-item {
+            margin-bottom: 10px;
+        }
+        /* 新增：最右邊結果欄位移到下方的新容器 */
+        #column-3-result-container {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e9f5ff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        #column-3-result-container h3 {
+            margin-top: 0;
+            border-bottom: 2px solid #2980b9;
+            padding-bottom: 10px;
+        }
+        /* 最右邊結果欄位的兩欄佈局 */
+        #column-3-text-results {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+        /* 圖片容器 */
+        #column-3-image-results {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .result-image {
+            width: 100%;
+            height: auto;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>急性呼吸困難評估</h1>
+        <h2>檢驗檢查</h2>
+
+        <div class="grid-container" id="selection-grid">
+            <div class="column">
+                <h3>欄位 1</h3>
+                <div class="checkbox-group"></div>
+            </div>
+            
+            <div class="column">
+                <h3>欄位 2</h3>
+                <div class="checkbox-group"></div>
+            </div>
+            
+            <div class="column">
+                <h3>欄位 3</h3>
+                <div class="checkbox-group"></div>
+            </div>
+        </div>
+
+        <button id="submit-btn">提交</button>
+
+        <div id="result-section">
+            <h1>急性呼吸困難評估</h1>
+            <h2>檢驗檢查</h2>
+            <div class="grid-container" id="result-grid">
+                <div class="column result-column" id="result-column-1">
+                    <h3>欄位 1 結果</h3>
+                </div>
+                
+                <div class="column result-column" id="result-column-2">
+                    <h3>欄位 2 結果</h3>
+                </div>
+            </div>
+            
+            <div id="column-3-result-container">
+                <h3>欄位 3 結果</h3>
+                <div id="column-3-text-results"></div>
+                <div id="column-3-image-results" class="image-container"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+    
+</body>
+</html>
