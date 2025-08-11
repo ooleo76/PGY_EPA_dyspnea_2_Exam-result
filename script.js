@@ -51,7 +51,7 @@ const columnData = [
         { 
             text: 'ABG', 
             result: [
-                ['ABG-pH', '<span class="abg-red-value">7.099</span>' , '7.35-7.45'],
+                ['ABG-pH', '<span class="red"> 7.099 </span>' , '7.35-7.45'],
                 ['ABG-PCO2', '15.0', '35-45'],                
                 ['ABG-PO2', '70.5', '80-100'],
                 ['ABG-HCO3', '4.7', '21-28'],
@@ -138,7 +138,7 @@ submitBtn.addEventListener('click', () => {
                             // 遍歷每一行中的每個數值
                             row.forEach(value => {
                                 const span = document.createElement('span');
-                                span.textContent = value;
+                                span.innerHTML = value;
                                 resultValues.appendChild(span);
                             });
                             resultColumn.appendChild(resultValues);
