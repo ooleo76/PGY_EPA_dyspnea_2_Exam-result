@@ -18,23 +18,31 @@ const columnData = [
         {
             text: 'CBC/DC',
             result: [
-                ['WBC', '5,500', '4,000-10,000 /uL'],
-                ['RBC', '4.5', '4.0-5.5 mil/uL'],
-                ['Hb', '14.5', '13.0-17.0 g/dL'],
-                ['Hct', '43.0', '39.0-50.0%'],
-                ['Plt', '250,000', '150,000-400,000 /uL'],
-                ['Neut', '60%', '40-70%'],
-                ['Lymph', '30%', '20-40%'] // 新增第七行
+                ['WBC', '18.6', '3.4-9.1'],
+                ['-Band', '0', '0-3%'],
+                ['-Segment', '94', '45-70%'],
+                ['-lym.', '2', '20-45%'],
+                ['Hb', '3.2', '13.5-17.5 g/dL'],
+                ['Platelet', '359', '150-400'],
             ]
         },
-        { text: 'Glucose', result: [['Glucose', '100', '70-110 mg/dL']] },
-        { text: 'Na/K', result: [['Na/K', '140 / 4.0', '135-145 / 3.5-5.0 mEq/L']] },
-        { text: 'BUN/Crea', result: [['BUN/Crea', '15 / 1.0', '7-20 / 0.6-1.2 mg/dL']] },
-        { text: 'AST/ALT', result: [['AST/ALT', '25 / 30', '10-40 U/L']] },
-        { text: 'CRP', result: [['CRP', '0.5', '<1.0 mg/dL']] },
-        { text: 'Hs-Troponin I', result: [['Hs-Troponin I', '0.01', '<0.05 ng/mL']] },
-        { text: 'Albumin', result: [['Albumin', '4.0', '3.5-5.0 g/dL']] },
-        { text: 'Lactate', result: [['Lactate', '1.5', '<2.0 mmol/L']] },
+        { text: 'Glucose', result: [['Glucose', '156', '70-199']] },
+        { text: 'Na/K', result: [
+                ['Na', '139', '136-145'],
+                ['K', '4.96', '3.5-5.0']
+            ] },
+        { text: 'BUN/Crea', result: [
+                ['Crea', '29.59', '0.72-1.25'],
+                ['BUN', '285', '6-20']
+            ] },
+        { text: 'AST/ALT', result: [
+                ['ALT', '68', '2-40'],
+                ['AST', '57', '5-34']
+            ] },
+        { text: 'CRP', result: [['CRP', '240', '<5']] },
+        { text: 'Hs-Troponin I', result: [['Hs-Troponin I', '74', '<26']] },
+        { text: 'Albumin', result: [['Albumin', '2.2', '3.8-5.3']] },
+        { text: 'Lactate', result: [['Lactate', '6.6', '0.4-2.0']] },
         { text: 'XX', result: [['XX', '數值S', '正常值T']] }
     ],
     // 欄位 2: 其他檢查
@@ -43,24 +51,24 @@ const columnData = [
         { 
             text: 'ABG', 
             result: [
-                ['pH', '7.40', '7.35-7.45'],
-                ['PaO2', '90', '80-100 mmHg'],
-                ['PaCO2', '40', '35-45 mmHg'],
-                ['HCO3-', '24', '22-26 mmol/L'],
-                ['BE', '0', '-2 to +2 mmol/L'],
-                ['SaO2', '97%', '95-100%'],
-                ['Lac', '1.5', '<2.0 mmol/L']
+                ['ABG-pH', '<span class="abg-red-value">7.099</span>' , '7.35-7.45'],
+                ['ABG-PCO2', '15.0', '35-45'],                
+                ['ABG-PO2', '70.5', '80-100'],
+                ['ABG-HCO3', '4.7', '21-28'],
+                ['ABG-Base Excess', '-22.1', '-2.3-2.4'],
+                ['FiO2', '80%', ''],
+                ['P/F ratio', '88.1', '']
             ]
         },
         // 修改: VBG 的結果為五行
         { 
             text: 'VBG', 
             result: [
-                ['pH', '7.35', '7.30-7.40'],
-                ['PvO2', '40', '35-45 mmHg'],
-                ['PvCO2', '45', '41-51 mmHg'],
-                ['HCO3-', '24', '22-26 mmol/L'],
-                ['Lac', '1.5', '<2.0 mmol/L']
+                ['ABG-pH', '7.084', '7.35-7.45'],
+                ['ABG-PCO2', '19.0', '35-45'],                
+                ['ABG-PO2', '34.1', '80-100'],
+                ['ABG-HCO3', '5.9', '21-28'],
+                ['ABG-Base Excess', '-21.1', '-2.3-2.4'],
             ]
         },
         { text: 'D-Dimer', result: [['D-Dimer', '200', '<500 ng/mL']] },
@@ -74,16 +82,16 @@ const columnData = [
     ],
     // 欄位 3: 影像檢查 (圖片和文字描述)
     [
-        { text: 'CXR', result: '胸部X光：可能顯示肺水腫、氣胸或肺炎。', image: 'images/image1.jpg' },
-        { text: 'EKG', result: '心電圖：評估心律不整或心肌缺血。', image: 'https://via.placeholder.com/200x150/007bff/ffffff?text=Image+2' },
-        { text: 'Echo', result: '心臟超音波：評估心臟結構及功能。', image: 'https://via.placeholder.com/200x150/28a745/ffffff?text=Image+3' },
-        { text: 'Chest CT', result: '胸部電腦斷層：更精確地評估肺部結構。', image: 'https://via.placeholder.com/200x150/dc3545/ffffff?text=Image+4' },
-        { text: 'XX', result: '氧氣治療：提高血氧飽和度。', image: 'https://via.placeholder.com/200x150/ffc107/ffffff?text=Image+5' },
-        { text: 'XX', result: '抽血檢驗：進一步確認病因。', image: 'https://via.placeholder.com/200x150/17a2b8/ffffff?text=Image+6' },
-        { text: 'XX', result: '心臟監測：持續觀察心律。', image: 'https://via.placeholder.com/200x150/6c757d/ffffff?text=Image+7' },
-        { text: 'XX', result: '電腦斷層掃描：用於更精確的影像診斷。', image: 'https://via.placeholder.com/200x150/6610f2/ffffff?text=Image+8' },
-        { text: 'XX', result: '血壓監測：用於持續觀察血壓。', image: 'https://via.placeholder.com/200x150/e83e8c/ffffff?text=Image+9' },
-        { text: 'XX', result: '其他：根據醫囑進行個別化處理。', image: 'https://via.placeholder.com/200x150/fd7e14/ffffff?text=Image+10' }
+        { text: 'CXR', result: '', image: 'images/image1.jpg' },
+        { text: 'EKG', result: '', image: 'https://via.placeholder.com/200x150/007bff/ffffff?text=Image+2' },
+        { text: 'Echo', result: '', image: 'https://via.placeholder.com/200x150/28a745/ffffff?text=Image+3' },
+        { text: 'Chest CT', result: '', image: 'https://via.placeholder.com/200x150/dc3545/ffffff?text=Image+4' },
+        { text: 'XX', result: '', image: 'https://via.placeholder.com/200x150/ffc107/ffffff?text=Image+5' },
+        { text: 'XX', result: '', image: 'https://via.placeholder.com/200x150/17a2b8/ffffff?text=Image+6' },
+        { text: 'XX', result: '', image: 'https://via.placeholder.com/200x150/6c757d/ffffff?text=Image+7' },
+        { text: 'XX', result: '', image: 'https://via.placeholder.com/200x150/6610f2/ffffff?text=Image+8' },
+        { text: 'XX', result: '', image: 'https://via.placeholder.com/200x150/e83e8c/ffffff?text=Image+9' },
+        { text: 'XX', result: '', image: 'https://via.placeholder.com/200x150/fd7e14/ffffff?text=Image+10' }
     ]
 ];
 
