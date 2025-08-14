@@ -89,11 +89,43 @@ const columnData = [
         { text: 'Chest CT', result: '', image: 'https://via.placeholder.com/200x150/ffc107/ffffff?text=Image+5' },
         { text: 'Brain CT', result: '', image: 'images/BRAIN_CT.gif' },
         { text: 'XX', result: '', image: 'https://via.placeholder.com/200x150/6c757d/ffffff?text=Image+7' },
-        { text: 'XX', result: '', image: 'https://via.placeholder.com/200x150/6610f2/ffffff?text=Image+8' },
-        { text: 'XX', result: '', image: 'https://via.placeholder.com/200x150/e83e8c/ffffff?text=Image+9' },
-        { text: 'XX', result: '', image: 'https://via.placeholder.com/200x150/fd7e14/ffffff?text=Image+10' }
+        { text: 'XX', result: [['XX', '數值MM', '正常值NN']], image: 'https://via.placeholder.com/200x150/6610f2/ffffff?text=Image+8' },
+        { text: 'XX', result: [['XX', '數值MM', '正常值NN']], image: 'https://via.placeholder.com/200x150/e83e8c/ffffff?text=Image+9' },
+        { text: 'XX', result: [['XX', '數值MM', '正常值NN']], image: 'https://via.placeholder.com/200x150/fd7e14/ffffff?text=Image+10' }
     ]
 ];
+
+function checkValue(resultValue, normalRange) {
+    // 移除多餘空白
+    resultValue = resultValue.trim();
+    normalRange = normalRange.trim();
+
+    // 空值不判斷
+    if (!normalRange) return null;
+
+    // 嘗試轉成數字，並移除百分比符號
+    let valueNum = parseFloat(resultValue.replace(/[^0-9.\-]/g, ''));
+    if (isNaN(valueNum)) return null;
+
+    // 處理 "<" 格式
+    if (normalRange.startsWith('<')) {
+        let limit = parseFloat(normalRange.slice(1));
+        return valueNum < limit ? 'normal' : 'abnormal';
+    }
+    // 處理 ">" 格式
+    if (normalRange.startsWith('>')) {
+        let limit = parseFloat(normalRange.slice(1));
+        return valueNum > limit ? 'normal' : 'abnormal';
+    }
+    // 處理 "a-b" 格式
+    if (normalRange.includes('-')) {
+        let [low, high] = normalRange.split('-').map(n => parseFloat(n));
+        if (!isNaN(low) && !isNaN(high)) {
+            return valueNum >= low && valueNum <= high ? 'normal' : 'abnormal';
+        }
+    }
+    return null; // 無法判斷
+}
 
 // 步驟一：動態生成所有複選框
 const checkboxGroups = document.querySelectorAll('.checkbox-group');
@@ -112,8 +144,8 @@ submitBtn.addEventListener('click', () => {
     resultSection.style.display = 'block';
 
     // 清空舊的結果，但保留標題和表頭
-    resultColumn1.querySelectorAll('.result-values, .result-item').forEach(el => el.remove());
-    resultColumn2.querySelectorAll('.result-values, .result-item').forEach(el => el.remove());
+    resultColumn1.querySelectorAll('.result-values').forEach(el => el.remove());
+    resultColumn2.querySelectorAll('.result-values').forEach(el => el.remove());
     column3TextResults.innerHTML = '';
     column3ImageResults.innerHTML = '';
     
@@ -136,9 +168,18 @@ submitBtn.addEventListener('click', () => {
                             const resultValues = document.createElement('div');
                             resultValues.classList.add('result-values');
                             // 遍歷每一行中的每個數值
-                            row.forEach(value => {
+                            row.forEach((value, idx) => {
                                 const span = document.createElement('span');
                                 span.innerHTML = value;
+                                
+                                // idx === 1 表示是結果欄位（項目=0, 結果=1, 正常值=2）
+                                if (idx === 1) {
+                                    let normalRange = row[2] || '';
+                                    let status = checkValue(value, normalRange);
+                                    if (status === 'normal') span.classList.add('normal-value');
+                                    if (status === 'abnormal') span.classList.add('abnormal-value');
+                                }
+                               
                                 resultValues.appendChild(span);
                             });
                             resultColumn.appendChild(resultValues);
@@ -151,16 +192,20 @@ submitBtn.addEventListener('click', () => {
                     const selectedIndex = parseInt(checkbox.value, 10);
                     const item = column[selectedIndex];
 
-                    const textItem = document.createElement('div');
-                    textItem.classList.add('result-item');
-                    textItem.textContent = item.result;
-                    column3TextResults.appendChild(textItem);
-
-                    const imageElement = document.createElement('img');
-                    imageElement.classList.add('result-image');
-                    imageElement.src = item.image;
-                    imageElement.alt = item.text;
-                    column3ImageResults.appendChild(imageElement);
+                    if (item.result) {
+                        const textItem = document.createElement('div');
+                        textItem.classList.add('result-item');
+                        textItem.textContent = item.result;
+                        column3TextResults.appendChild(textItem);
+                    }
+                    
+                    if (item.image) {
+                        const imageElement = document.createElement('img');
+                        imageElement.classList.add('result-image');
+                        imageElement.src = item.image;
+                        imageElement.alt = item.text;
+                        column3ImageResults.appendChild(imageElement);
+                    }
                 });
             }
         } else {
