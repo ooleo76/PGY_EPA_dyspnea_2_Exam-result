@@ -14,9 +14,17 @@ body {
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
+.top-header-container {
+    background-color: #e9f5ff; /* 淺藍色背景 */
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
 h1 {
     text-align: center;
     color: #333;
+    font-size: 2.5em;
 }
 
 h2 {
@@ -24,6 +32,7 @@ h2 {
     color: #666;
     margin-top: 5px;
     margin-bottom: 30px;
+    font-size: 2em;
 }
 
 .grid-container {
@@ -42,12 +51,15 @@ h2 {
     margin-top: 0;
     border-bottom: 2px solid #007bff;
     padding-bottom: 10px;
+    font-size: 24px; /* 放大到 24px */
+    text-align: center; /* 置中 */
 }
 
 .checkbox-group label {
     display: block;
     margin: 10px 0;
     cursor: pointer;
+    font-size: 20px;
 }
 
 .checkbox-group input[type="checkbox"] {
@@ -59,7 +71,7 @@ h2 {
     width: 200px;
     margin: 30px auto 0;
     padding: 12px;
-    font-size: 18px;
+    font-size: 20px;
     cursor: pointer;
     background-color: #28a745;
     color: white;
@@ -75,7 +87,7 @@ h2 {
 #result-header-container {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center; /* 置中標題 */
 }
 
 #result-back-btn {
@@ -86,6 +98,9 @@ h2 {
     color: white;
     border: none;
     border-radius: 5px;
+    /* 新增樣式以避免被置中排版影響 */
+    position: absolute;
+    right: 20px;
 }
 
 #result-grid {
@@ -106,6 +121,8 @@ h2 {
 .result-column h3 {
     border-bottom: 2px solid #2980b9;
     margin-top: 0;
+    font-size: 24px; /* 放大到 24px */
+    text-align: center; /* 置中 */
 }
 
 .result-header {
@@ -124,7 +141,7 @@ h2 {
     grid-template-columns: repeat(3, 1fr);
     gap: 5px;
     margin-top: 5px;
-    font-size: 14px;
+    font-size: 20px;
 }
 
 .result-values span {
@@ -157,6 +174,8 @@ h2 {
     margin-top: 0;
     border-bottom: 2px solid #2980b9;
     padding-bottom: 10px;
+    font-size: 24px; /* 放大到 24px */
+    text-align: center; /* 置中 */
 }
 
 #column-3-text-results {
