@@ -86,7 +86,7 @@ const columnData = [
         { text: 'EKG', result: '', image: 'images/EKG.jpg' },
         { text: 'ABD Echo', result: '', image: 'images/ABD_ECHO.jpg' },
         { text: 'Cardiac echo', result: '', image: 'images/CARDIAC_ECHO.jpg' },
-        { text: 'Chest CT', result: '', image: 'https://via.placeholder.com/200x150/ffc107/ffffff?text=Image+5' },
+        { text: 'Chest CT', result: '', image: 'images/CHEST_CT.gif' },
         { text: 'Brain CT', result: '', image: 'images/BRAIN_CT.gif' },
         { text: 'XX', result: '', image: 'https://via.placeholder.com/200x150/6c757d/ffffff?text=Image+7' },
         { text: 'XX', result: [['XX', '數值MM', '正常值NN']], image: 'https://via.placeholder.com/200x150/6610f2/ffffff?text=Image+8' },
