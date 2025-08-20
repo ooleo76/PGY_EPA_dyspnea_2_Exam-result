@@ -7,67 +7,67 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <div class="container">
         <div class="top-header-container">
             <h1>急性呼吸困難評估</h1>
-            <h2>檢驗檢查</h2>
+            <h2>檢驗檢查系統</h2>
         </div>
 
-        <div class="grid-container" id="selection-grid">
-            <div class="column">
-                <h3>血液/生化檢查</h3>
-                <div class="checkbox-group"></div>
-            </div>
-            
-            <div class="column">
-                <h3>其他檢查</h3>
-                <div class="checkbox-group"></div>
-            </div>
-            
-            <div class="column">
-                <h3>影像檢查</h3>
-                <div class="checkbox-group"></div>
-            </div>
-        </div>
-
-        <button id="submit-btn">提交</button>
-
-        <div id="result-section">
-            <div id="result-header-container">
-                <h1>檢查結果</h1>
-                <button id="result-back-btn">返回</button>
-            </div>
-            <div class="grid-container" id="result-grid">
-                <div class="column result-column" id="result-column-1">
+        <div class="main-content">
+            <div class="grid-container" id="selection-grid">
+                <div class="column">
                     <h3>血液/生化檢查</h3>
-                    <div class="result-header">
-                        <span>項目</span>
-                        <span>結果</span>
-                        <span>正常值</span>
+                    <div class="checkbox-group"></div>
+                </div>
+                
+                <div class="column">
+                    <h3>其他檢查</h3>
+                    <div class="checkbox-group"></div>
+                </div>
+                
+                <div class="column">
+                    <h3>影像檢查</h3>
+                    <div class="checkbox-group"></div>
+                </div>
+            </div>
+
+            <button id="submit-btn">開始檢查</button>
+
+            <div id="result-section">
+                <div id="result-header-container">
+                    <h1 style="color: #2c3e50;">檢查結果</h1>
+                    <button id="result-back-btn">← 返回選擇</button>
+                </div>
+                
+                <div class="grid-container" id="result-grid">
+                    <div class="column result-column" id="result-column-1">
+                        <h3>血液/生化檢查</h3>
+                        <div class="result-header">
+                            <span>檢查項目</span>
+                            <span>檢查結果</span>
+                            <span>正常參考值</span>
+                        </div>
+                    </div>
+                    
+                    <div class="column result-column" id="result-column-2">
+                        <h3>其他檢查</h3>
+                        <div class="result-header">
+                            <span>檢查項目</span>
+                            <span>檢查結果</span>
+                            <span>正常參考值</span>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="column result-column" id="result-column-2">
-                    <h3>其他檢查</h3>
-                    <div class="result-header">
-                        <span>項目</span>
-                        <span>結果</span>
-                        <span>正常值</span>
-                    </div>
+                <div id="column-3-result-container">
+                    <h3>影像檢查結果</h3>
+                    <div id="column-3-text-results"></div>
+                    <div id="column-3-image-results"></div>
                 </div>
             </div>
-            
-            <div id="column-3-result-container">
-                <h3>影像檢查</h3>
-                <div id="column-3-text-results"></div>
-                <div id="column-3-image-results" class="image-container"></div>
-            </div>
         </div>
-
     </div>
     
     <script src="script.js"></script>
-
 </body>
 </html>
