@@ -75,8 +75,8 @@ const columnData = [
         { text: 'Ketone body', result: [['Ketone body', '0.4', '<0.6']] },
         { text: 'HbA1c', result: [['HbA1c', '4.4', '<5.7']] },
         { text: 'NT-proBNP', result: [['NT-proBNP', '3754.1', '<125']] },
-        { text: 'XX', result: [['XX', '數值KK', '正常值LL']] },
-        { text: 'XX', result: [['XX', '數值MM', '正常值NN']] }
+        { text: '', result: [['XX', '數值KK', '正常值LL']] },
+        { text: '', result: [['XX', '數值MM', '正常值NN']] }
     ],
     // 欄位 3: 影像檢查 (圖片和文字描述)
     [
@@ -87,8 +87,8 @@ const columnData = [
         { text: 'Chest CT', result: '', image: 'images/CHEST_CT.gif' },
         { text: 'Brain CT', result: '', image: 'images/BRAIN_CT.gif' },
         { text: '', result: '', image: 'https://via.placeholder.com/200x150/6c757d/ffffff?text=Image+7' },
-        { text: 'XX', result: [['XX', '數值MM', '正常值NN']], image: 'https://via.placeholder.com/200x150/e83e8c/ffffff?text=Image+8' },
-        { text: 'XX', result: [['XX', '數值MM', '正常值NN']], image: 'https://via.placeholder.com/200x150/fd7e14/ffffff?text=Image+9' },
+        { text: '', result: [['XX', '數值MM', '正常值NN']], image: 'https://via.placeholder.com/200x150/e83e8c/ffffff?text=Image+8' },
+        { text: '', result: [['XX', '數值MM', '正常值NN']], image: 'https://via.placeholder.com/200x150/fd7e14/ffffff?text=Image+9' },
         { text: 'CXR_ETT', result: '', image: 'images/image2.jpg' }
     ]
 ];
